@@ -21,6 +21,7 @@ mv .env.example .env
 ```
 APP_DEBUG=false
 
+APP_ENV=production
 DB_DATABASE=<Имя БД>
 DB_USERNAME=<Пользователь>
 DB_PASSWORD=<Пароль>
