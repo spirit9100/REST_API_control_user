@@ -26,10 +26,8 @@ class UserUpdateRequest extends FormRequest
         return [
             //name, ip, comment и password.
             'name' => 'sometimes|string|required|max:255',
-//            todo правила для ip
             'ip' => 'ip|nullable',
             'comment' => 'string|nullable',
-//            todo правила для password
             'password' => 'string|size:8',
 
         ];
