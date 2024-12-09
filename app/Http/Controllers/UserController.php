@@ -8,6 +8,7 @@ use App\Http\Requests\User\UserStoreRequest;
 use App\Http\Requests\User\UserUpdateRequest;
 use App\Http\Resources\User\UserCollection;
 use App\Http\Resources\User\UserResource;
+use App\Http\Resources\User\UserShowResource;
 use App\Models\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Hash;
@@ -40,7 +41,7 @@ class UserController extends Controller
 
         $data = $request->validated();
         $data['password'] = Hash::make($data['password']);
-
+        $data['ip'] = $request->ip();
         $user = User::create($data);
         return new UserResource($user);
     }
@@ -49,7 +50,7 @@ class UserController extends Controller
      * Display the specified resource.
      *
      * @param int $id
-     * @return UserResource|\Illuminate\Http\JsonResponse
+     * @return UserShowResource|\Illuminate\Http\JsonResponse
      */
     public function show(int $id)
     {
@@ -65,7 +66,7 @@ class UserController extends Controller
                 ], 404);
 
         }
-        return new UserResource($user);
+        return new UserShowResource($user);
     }
 
     /**
@@ -91,7 +92,7 @@ class UserController extends Controller
         if (isset($validated['password'])) {
             $validated['password'] = Hash::make($validated['password']);
         }
-
+        $validated['ip'] = $request->ip();
         $user->update($validated);
         return new UserResource($user);
     }
