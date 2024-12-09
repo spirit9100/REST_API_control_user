@@ -24,9 +24,7 @@ class UserUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //name, ip, comment и password.
             'name' => 'sometimes|string|required|max:255',
-            'ip' => 'ip|nullable',
             'comment' => 'string|nullable',
             'password' => 'string|size:8',
 

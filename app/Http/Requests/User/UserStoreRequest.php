@@ -29,7 +29,6 @@ class UserStoreRequest extends FormRequest
             'email' => 'required|email|unique:users',
             'password' => 'required|min:8',
             'comment' => 'string|nullable',
-            'ip' => 'ip|nullable',
         ];
     }
 
@@ -40,7 +39,6 @@ class UserStoreRequest extends FormRequest
             'email.email' => 'Неверный формат Email',
             'email.unique' => 'Пользователь с таким Email уже существует',
             'password.required' => 'Пароль обязательное поле',
-            'ip.ip' => 'Неверный формат IP адреса',
         ];
     }
 }
